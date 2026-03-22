@@ -1,5 +1,5 @@
+# start DOCKER C:\Java\account-service> docker-compose up -d
 version: '3.8'
-# start DOCKER  C:\Java\account-service> docker-compose up -d
 services:
   pg:
     container_name: sendToTax_container

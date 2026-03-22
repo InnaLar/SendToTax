@@ -1,8 +1,9 @@
-CREATE TABLE IF NOT EXISTS receipts (
-id        BIGSERIAL,
-processed BOOLEAN DEFAULT FALSE,
-sum       VARCHAR(20),
-source    VARCHAR(10)
+CREATE TABLE IF NOT EXISTS receipts
+(
+    id        BIGSERIAL PRIMARY KEY,
+    processed BOOLEAN DEFAULT FALSE,
+    sum       VARCHAR(20),
+    source    VARCHAR(10)
 );
 comment on table receipts is 'Платежки';
 comment on column receipts.id is 'id';
