@@ -10,10 +10,7 @@
       flyway:
         baseline-on-migrate: true # создаем таблицу flyway_schema_history, если ее нет
         baseline-version: 0 # начальная версия миграции
-        locations: classpath:db/migration/user
         enabled: true # включаем flyway
-        schemas: user
-        default-schema: user
       application:
         name: taxSending
       datasource:
@@ -30,6 +27,5 @@
           hibernate:
             dialect: org.hibernate.dialect.PostgreSQLDialect # диалект для работы с postgres
             format_sql: true # форматировать sql запросы в консоли
-            default_schema: "user"
         open-in-view: false
 

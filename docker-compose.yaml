@@ -8,6 +8,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
