@@ -23,7 +23,7 @@ spring:
     hibernate:
       ddl-auto: update # выключаем автоматическое создание таблиц хибернейтом, т.к. используем flyway
       # оставляем валидацию таблиц
-    show-sql: true # показывать sql запросы в консоли
+    show-sql: false # показывать sql запросы в консоли
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect # диалект для работы с postgres

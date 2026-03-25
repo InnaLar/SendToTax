@@ -21,7 +21,7 @@ public class ReceiptPopulationJob {
 
     @Scheduled(cron = "*/10 * * * * *")
     public void processJob() {
-        log.info("Process started");
+        log.info("Start receipts populating");
         List<Receipt> receipts = new ArrayList<>();
         Random random = new Random();
 
@@ -34,6 +34,6 @@ public class ReceiptPopulationJob {
             receipts.add(receipt);
         }
         repository.saveAll(receipts);
-        log.info("Process stopped");
+        log.info("{} receipts added", 10);
     }
 }
