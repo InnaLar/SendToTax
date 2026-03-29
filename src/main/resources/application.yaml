@@ -21,8 +21,7 @@ spring:
     driver-class-name: org.postgresql.Driver # драйвер для работы с postgres
   jpa:
     hibernate:
-      ddl-auto: update # выключаем автоматическое создание таблиц хибернейтом, т.к. используем flyway
-      # оставляем валидацию таблиц
+      ddl-auto: update
     show-sql: false # показывать sql запросы в консоли
     properties:
       hibernate:

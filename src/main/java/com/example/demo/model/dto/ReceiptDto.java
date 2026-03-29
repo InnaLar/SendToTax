@@ -1,14 +1,12 @@
 package com.example.demo.model.dto;
 
-import com.example.demo.model.entity.ReceiptSource;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@Builder
 public class ReceiptDto {
     private Long id;
     private String sum;
-    private ReceiptSource source;
 }
