@@ -15,7 +15,7 @@ spring:
   application:
     name: taxSending
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/postgres?options=-c%20idle_in_transaction_session_timeout=500
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver # драйвер для работы с postgres

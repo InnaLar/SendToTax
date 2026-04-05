@@ -10,13 +10,3 @@ comment on column receipts.id is 'id';
 comment on column receipts.processed is 'Признак обработки';
 comment on column receipts.sum is 'Сумма платежки';
 comment on column receipts.source is 'Назначение платежа';
-
-CREATE TABLE IF NOT EXISTS booked
-(
-    job_id       VARCHAR(36),
-    booked_id        BIGSERIAL
-);
-
-comment on table booked is 'Занятые id из платежек';
-comment on column booked.job_id is 'GUID сервиса';
-comment on column booked.booked_id is 'занятые id платежек';
