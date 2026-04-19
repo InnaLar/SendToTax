@@ -15,6 +15,7 @@ import java.time.LocalTime;
 @Builder
 public class Shedlock {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     @Column
