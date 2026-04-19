@@ -6,7 +6,6 @@ import com.example.demo.model.entity.Shedlock;
 import com.example.demo.model.entity.ShedlockStatus;
 import com.example.demo.repository.ReceiptRepository;
 import com.example.demo.repository.ShedlockRepository;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,12 +22,13 @@ public class SendReceiptJob {
     private final ReceiptRepository repository;
     private final ShedlockRepository shedlockRepository;
     private final TaxClient taxClient;
+    private final LockService lockService;
 
     @Scheduled(cron = "*/10 * * * * *")
     public void processReceipt() {
         try {
             log.info("Start receipts' processing");
-            if (!lock("processReceipt")) {
+            if (!lockService.lock("processReceipt")) {
 
                 List<Receipt> receipts = repository.findAllByProcessedFalse(20);
                 for (Receipt receipt : receipts) {
@@ -59,24 +59,5 @@ public class SendReceiptJob {
         shedlock.setStatus(ShedlockStatus.READY_TO_WORK);
         shedlockRepository.save(shedlock);
     }
-
-    @Transactional
-    public boolean lock(String name) {
-
-        Optional<Shedlock> byName = shedlockRepository.findByName(name);
-        if (byName.isEmpty()) {
-            return false;
-        }
-
-        Shedlock shedlock = byName.get();
-        if (shedlock.getStatus().equals(ShedlockStatus.IN_PROCESS)) {
-            return false;
-        } else {
-            shedlock.setStatus(ShedlockStatus.IN_PROCESS);
-            return true;
-        }
-
-    }
-
 
 }
